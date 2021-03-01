@@ -1,0 +1,80 @@
+<div class="row m-0 p-2">
+  <a
+    href="#/user/users"
+    class="back-to-user"
+    style="text-decoration: none; color: #76618b"
+  >
+    <span class="fa fa-arrow-left mt-1 mx-2"></span>
+    Back to Users
+  </a>
+</div>
+
+<div class="row m-0 p-2">
+  <div class="row user-details mx-2 mt-0">
+    <div class="row d-flex mt-2 w-100 m-0 user-details-block">
+      <div class="ml-2 pl-1 pt-1" style="width: 50px">
+        <img
+          src="{{ user.profileImageUrl }}"
+          alt=""
+          style="border-radius: 30px"
+          width="50px"
+          height="50px"
+        />
+      </div>
+      <div class="col-md-3 col-md-offset-1">
+        <p class="user-name text-dark">{{ user.userName }}</p>
+        <p class="user-jobrole">{{ user.jobRole }}</p>
+        <p class="user-department">
+          {{ user.department }}, {{ user.jobLocation }}
+        </p>
+        <div class="user-icons d-flex">
+          <div class="mr-4">
+            <span class="fa fa-thumbs-up mr-1"></span
+            >{{ user.likes?.length || 0 }}
+          </div>
+          <div>
+            <span class="fa fa-thumbs-down mr-1"></span
+            >{{ user.dislikes?.length || 0 }}
+          </div>
+        </div>
+      </div>
+      <div class="block">
+        <div class="d-flex justify-content-center user-block-count">
+          {{ user.questionsAsked || 0}}
+        </div>
+        <div class="d-flex justify-content-center">
+          <p class="mt-1">Questions Asked</p>
+        </div>
+      </div>
+      <div class="block">
+        <div class="d-flex justify-content-center user-block-count">
+          {{ user.questionsAnswered || 0}}
+        </div>
+        <div class="d-flex justify-content-center">
+          <p class="mt-1">Questions Answered</p>
+        </div>
+      </div>
+      <div class="block">
+        <div class="d-flex justify-content-center user-block-count">
+          {{ user.questionsSolved || 0}}
+        </div>
+        <div class="d-flex justify-content-center">
+          <p class="mt-1">Questions Solved</p>
+        </div>
+      </div>
+    </div>
+    <div class="row d-flex w-100 m-0 user-details-block2">
+      <div
+        class="d-flex justify-content-center"
+        style="border-bottom: 3px solid#9586a6; width: 120px"
+      >
+        <p>All Questions</p>
+      </div>
+      <div class="d-flex justify-content-center" style="width: 120px">
+        <p>Answered</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-questions-list [questions]="questions" ></app-questions-list>

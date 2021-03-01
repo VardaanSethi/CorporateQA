@@ -1,0 +1,62 @@
+<div class="row home-header mx-0">
+    <div class="ml-3" style="width: 350px">
+      <p>Users</p>
+      <div class="input-wrapper">
+        <input
+          type="text"
+          name="search"
+          id="search"
+          placeholder="Search"
+          class="form-control"
+          (keyup)="searchUser($event)"
+        />
+        <label for="search" class="fa fa-search input-icon"></label>
+      </div>
+    </div>
+</div>
+<div class="row mx-0 mt-2 p-2">
+    <div class="user-card" *ngFor="let user of users" (click)="navigate(user.id)">
+        <div class="row d-flex">
+            <div class="col-md-2 ml-2">
+                <img src={{user.profileImageUrl}} alt="" style="border-radius: 30px;" width="50px" height="50px">
+            </div>
+            <div class="col-md-8 col-md-offset-1">
+                <p class="user-name text-dark">{{user.userName}}</p>
+                <p class="user-jobrole">{{user.jobRole}}</p>
+                <p class="user-department">{{user.department}}, {{user.jobLocation}}</p>
+                <div class="user-icons d-flex">
+                    <div class="mr-4"><span class="fa fa-thumbs-up mr-1"></span>{{user.likes?.length || 0}}</div>
+                    <div><span class="fa fa-thumbs-down mr-1"></span>{{user.dislikes?.length || 0}}</div>
+                </div> 
+            </div>
+        </div>
+        <div class="user-card-footer d-flex">
+            <div class="footer-block">
+            <div class="d-flex justify-content-center footer-block-count">
+                {{user.questionsAsked || 0}}
+            </div>
+            <div class="d-flex justify-content-center">
+                <p class="mt-1">Questions Asked</p>
+            </div>
+            </div>
+            <div class="footer-block footer-block-border">
+                <div class="d-flex justify-content-center footer-block-count">
+                    {{user.questionsAnswered || 0}}
+                </div>
+                <div class="d-flex justify-content-center">
+                    <p class="mt-1">Questions Answered</p>
+                </div>
+            </div>
+            <div class="footer-block">
+                <div class="d-flex justify-content-center footer-block-count">
+                    {{user.questionsSolved || 0}}
+                </div>
+                <div class="d-flex justify-content-center">
+                    <p class="mt-1">Questions Solved</p>
+                </div>
+            </div>
+        </div>      
+    </div>
+        </div>
+  
+  

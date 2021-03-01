@@ -1,0 +1,26 @@
+<div class="d-flex flex-row">
+    <div class="navigation-bar d-flex flex-column">
+      <div>
+        <img src="../../../assets/Images/logo.png" alt="" />
+      </div>
+      <div>
+        <img src="../assets/Images/forum.png" alt="" />
+      </div>
+    </div>
+    <div class="top-navigation" >
+      <div class="header d-flex justify-content-end" *ngIf="authenticationService.userId!=0">
+          <p>{{currentDay}} {{currentMonth}} {{currentYear}}</p>
+          <p>{{authenticationService.userName}}</p>
+          <img src="authenticationService.profileSource" class="mt-1 mr-2 profile-image"  alt="">
+          <p (click)="logOut()">Logout</p>
+      </div>
+      <div class="header d-flex justify-content-end" *ngIf="authenticationService.userId==0">
+      <a [routerLink]="['authentication/signin']" ><p>Signin</p></a>
+      <a [routerLink]="['authentication/signup']" ><p>Signup</p></a>  
+      </div>
+      
+      <div class="main">
+          <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>

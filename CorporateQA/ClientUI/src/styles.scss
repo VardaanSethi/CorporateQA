@@ -1,0 +1,434 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100vh;
+}
+
+.top-navigation {
+  width: 100%;
+  .header {
+    background-color: #76618b;
+    height: 50px;
+    width: 100%;
+    p{
+      color: white;
+      font-size: 12px;
+      margin-right:20px;
+      margin-top: 15px;
+    }
+  }
+  .tabs {
+    width: 100%;
+    height: 30px;
+    background-color: white;
+    .tab-navigation{
+        list-style-type: none;
+        margin-top: 10px;
+        padding:0px 0px 10px 15px;
+        border-bottom: 1px solid rgb(201, 201, 201);
+       a{
+        text-decoration: none;  
+        color: black;
+        cursor: pointer; 
+        li{
+            margin-right: 35px;
+            font-size: 12px;
+            font-weight: 400;
+        }
+      }
+    }
+  }
+}
+.home-header{
+  border-bottom: 1px solid rgb(201, 201, 201);
+  padding: 10px 0px 20px 0px;
+  background-color: #f8f8f9;
+  p{
+    padding: 0;
+    margin: 0px 0px 10px 0px;
+    font-size: 13px;
+  }
+  input[type="text"],.dropdown{
+    height: 35px;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+  .question-button{
+    margin-top: 28px;
+    background-color: #76618b;
+    border: none;
+    font-size: 13px;
+    border-radius: 4px;
+    color: white;
+    height: 35px;
+    padding: 0px 15px;
+  }
+}
+.modal-header{
+  background-color: #515968;
+  p{
+    color:white;
+  }
+}
+.input-icon{
+  font-size: 12px;
+  margin-left: 2px;
+  color: #a4aab2;
+  position: absolute;
+  left: 5px;
+  top: calc(50% - 0.5em); /* Keep icon in center of input, regardless of the input height */
+}
+
+.input-wrapper{
+  position: relative;
+  input{
+    padding-left: 22px;
+  }
+}
+.modal-body{
+  label{
+    font-size: 13px;
+  }
+  .input-field{
+    font-size: 12px;
+  }
+  p{
+    font-size: 13px;
+  }
+  textarea{
+    resize: none;
+  }
+  .modal-button-style{
+    font-size: 12px;
+    color: white;
+    border: none;
+    width: 70px;
+    height: 30px;
+    border-radius: 4px;
+
+  }
+  .modalbtn-cancel{
+    background-color: #a4aab2;
+    @extend .modal-button-style;    
+  }
+  .modalbtn-save{
+    background-color: #76618b;
+    @extend .modal-button-style;
+  }
+  input[type="submit"]:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.reset{
+  color: #757779;
+  cursor: pointer;
+  p{
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+  }
+
+}
+.category-card{
+  border: 1px solid rgb(219, 216, 216);
+  border-radius: 3px;
+  background-color: white;
+  margin: 10px;
+  padding: 10px 5px;
+  height: 150px;
+  .card-name{
+    color: black;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0px 0px 10px 0px;
+  }
+  .card-questions{
+    font-size: 11px;
+  }
+  .card-description,.card-tag{
+    font-size: 11px;
+    color: #757779;
+  }
+  .card-tag{
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+.user-card,.user-details{
+  border: 1px solid rgb(219, 216, 216);
+  border-radius: 3px;
+  background-color: white;
+  margin: 10px;
+  padding: 10px 0px 0px 0px ;
+  height: 170px;
+  width: 321px;
+  position: relative;
+  cursor: pointer;
+  p{
+    margin: 0;
+  }
+  .user-name{
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .user-jobrole,.user-department{
+    font-size: 12px;
+    color: #757779;
+  }
+  .user-icons{
+    margin-top: 10px;
+    font-size: 13px;
+    color: #757779;
+    .fa-thumbs-up{
+      font-size: 16px;
+      color: #86c06a;
+    }
+    .fa-thumbs-down{
+      font-size: 16px;
+      color: #ef6868;
+    }
+  }
+  .user-card-footer{
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid rgb(219, 216, 216);
+    .footer-block{
+      width:107px;
+      height: 100%;
+      font-size: 10px;
+      color:#757779;
+    }
+    .footer-block-border{
+      border-width:0px 1px;
+      border-style:  solid;
+      border-color:  rgb(219, 216, 216);  
+    }
+    .footer-block-count{
+      font-size: 13px;
+      color: black;
+      margin-top: 5px;
+    }
+  }
+}
+.profile-image{
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.back-to-user{
+  span{
+    font-weight: lighter;
+    font-size: 16px;
+  }
+  font-size: 14px;
+}
+
+.user-details{
+  width: 100%;
+  .user-details-block{
+    height: 110px;
+    border-bottom: 1px solid rgb(219, 216, 216);
+  }
+  .user-details-block2{
+    p{
+      font-size:13px;
+    }
+  }
+    .block{
+    width: 120px;
+    height: 90px;
+    margin-right: 10px;
+    background-color: #f4f5f8;
+    font-size: 11px;
+    color:#757779;
+    padding-top: 20px;
+    .user-block-count{
+      font-size: 14px;
+      color: black;
+      margin-bottom: 10px;
+    }
+  }
+
+}
+
+.details-block{
+  height: 140vh;
+  border: 1px solid rgb(201, 201, 201);
+  border-radius: 5px;
+  .details-left-block{
+    background-color: white;
+    border-right:1px solid rgb(201, 201, 201); 
+    height: 100%;
+    .detail-card{
+      height:130px;
+      border-bottom:1px solid rgb(201, 201, 201);
+      &:hover{
+        background-color: #f9f8f6;
+        border-right: 4px solid #76618b;
+        cursor: pointer;
+      }
+      .title{
+        font-size:13px;
+      }
+      .description{
+        font-size: 11px;
+        color:#757779
+      }
+      .detail-card-footer{
+        position: absolute;
+        bottom: 0;
+        .views{
+          span{
+          font-size: 14px;
+          color: #757779;
+          }
+        }
+        p{
+          font-size: 10px;
+          color: #757779;
+        }
+        .answers{
+          background-color: #d9e5f0;
+          border: 1px solid rgb(201, 201, 201);
+          border-radius: 3px;
+          padding: 1px 4px;
+        }
+      }
+    }
+  }
+  .details-right-block{
+    height: 100%;
+    span{
+      font-size:30px;
+      font-weight: 100;
+      margin-bottom: 10px;
+      color: #757779;
+    }
+    p{
+      font-size: 17px;
+      color:#757779;
+    }
+    .user-answer{
+      width: 100%;
+      border-bottom: 1px solid rgb(201, 201, 201);
+      background-color:#f2f1f0;
+      p{
+        font-size: 14px;
+      }
+      .username,.title{
+        color: black;
+      }
+      .time{
+        margin-top: 10px;
+        font-size: 9px;
+      }
+      .report{
+        font-size: 11px;
+        color:#76618b;
+      }
+      .description{
+        font-size: 12px;
+      }
+      .answer-count{
+        width: 100%;
+        border-top: 1px solid rgb(201, 201, 201);
+        background-color: #e4e6e9;
+        p{
+        color: black;
+        font-size:12px;
+        }
+      }
+    }
+
+    .user-answers{
+      width: 100%;
+      height:80vh;
+      overflow-y: scroll;
+      background-color: #f8f8f9;
+      .user-answer-card{
+        height:min-content;
+        span{
+          font-size: 14px;
+        }
+        .fa-thumbs-up{
+          color: #86c06a;
+        }
+        .fa-thumbs-down{
+          color: #ef6868;
+        }
+      p{
+        font-size: 14px;
+      }
+      .username,.title{
+        color: black;
+      }
+      .time{
+        margin-top: 10px;
+        font-size: 10px;
+      }
+      .report{
+        font-size: 11px;
+        color:#76618b;
+      }
+      .description{
+        font-size: 12px;
+        color: black;
+      }
+      .best-solution-checkbox{
+        p{
+          font-size: 12px;
+          color: black;
+        }
+        input[type="checkbox"]:checked{
+          background-color: #86c06a;
+        }
+      }
+    }
+    }
+  }
+}
+
+.editor {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+
+  .NgxEditor__MenuBar {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    margin-bottom:5px;
+    width:70px;
+  }
+
+  .NgxEditor {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border: none;
+    height:110px;
+    padding: 0;
+    padding-bottom: 10px;
+    p{
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+      span{
+        font-size: 13px;
+      }
+    }
+  }
+
+  .CodeMirror {
+    border: 1px solid #eee;
+    height: auto;
+    margin-bottom: 0.7rem;
+
+    pre {
+      white-space: pre !important;
+    }
+  }
+}

@@ -1,0 +1,97 @@
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-12">
+            <h3 class="display-4 text-center">SignUp</h3>
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-md-6">
+                <div class="form-group">
+                    <label for="username">User Name</label>
+                    <input type="text" name="username" formControlName="username" id="username" class="form-control"> 
+                    <p *ngIf="formControls.username.invalid && formControls.username.touched" class="text-danger">
+                        Please fill this field
+                      </p>
+                </div>
+                </div>
+                <div class="col-md-6">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" formControlName="email" class="form-control"> 
+                    <p *ngIf="formControls.email.invalid && formControls.email.touched" class="text-danger">
+                        Please fill this field
+                      </p>
+                </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                <div class="form-group">
+                    <label for="username">Password</label>
+                    <input type="password" name="password" id="password" formControlName="password" class="form-control"> 
+                    <div *ngIf="formControls.password.invalid && formControls.password.touched" class="text-danger">
+                        Password must contain:
+                        <ul>
+                            <li>Both Capital and small letters</li>
+                            <li>Must contain Alphanumeric</li>
+                            <li>Length must be atleast 8</li>
+                        </ul>
+                      </div>
+                </div>
+                </div>
+                <div class="col-md-6">
+                <div class="form-group">
+                    <label for="jobrole">Job Role</label>
+                    <input type="text" name="jobrole" id="jobrole" formControlName="jobrole" class="form-control">
+                    <p *ngIf="formControls.jobrole.invalid && formControls.jobrole.touched" class="text-danger">
+                        Please fill this field
+                      </p>
+                </div>
+                </div>
+            </div>  
+            <div class="row">
+                <div class="col-md-6">
+                <div class="form-group">
+                    <label for="department">Department</label>
+                    <input type="text" name="department" id="department" formControlName="department" class="form-control">
+                    <p *ngIf="formControls.department.invalid && formControls.department.touched" class="text-danger">
+                        Please fill this field
+                      </p>
+                </div>
+                </div>
+                <div class="col-md-6">
+                <div class="form-group">
+                    <label for="joblocation">Job Location</label>
+                    <input type="text" name="joblocation" id="joblocation" formControlName="joblocation" class="form-control">
+                    <p *ngIf="formControls.joblocation.invalid && formControls.joblocation.touched" class="text-danger">
+                        Please fill this field
+                      </p>
+                </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                <div class="form-group">
+                    <label for="file">Upload Profile</label>
+                    <input
+                      formControlName="profile"
+                      id="profile"
+                      type="file"
+                      class="form-control"
+                      accept="image/*"
+                      (change)="onImageChange($event)"
+                    />
+                  </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="form-group" *ngIf="profileSrc!=''">
+                      <img src={{profileSrc}}  alt="" width="100px" height="100px">
+                        </div>
+                    </div>
+            </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" [disabled]="signupForm.invalid" value="SignUp">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

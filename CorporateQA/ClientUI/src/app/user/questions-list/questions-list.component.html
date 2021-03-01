@@ -1,0 +1,97 @@
+<div class="row m-0 mt-3">
+    <div class="row w-100 mx-3 details-block">
+      <div class="col-md-7 p-0 details-left-block">
+        <div class="detail-card  row m-0 w-100 pr-3" *ngFor="let question of questions">
+          <div class="col-md-1 mt-3 d-flex flex-column">
+            <img
+              src={{question.profileImageUrl}}
+              alt=""
+              style="border-radius: 20px"
+              width="30px"
+              height="30px"
+            />
+            <div class="d-flex flex-column mt-3 ml-1" >
+              <span class="fa fa-chevron-up" (click)="postUpVotes(question)" style="color: #757779"></span>
+              <p style="font-size: 13px;" class="m-auto">{{question.upVotes?.length ||0}}</p>
+            </div>
+          </div>
+          <div class="col-md-11" style="position: relative" (click)="getAnswers(question)">
+            <div class="row d-flex flex-column pl-2 w-100 mt-3">
+              <p class="title m-0">
+                {{question.title}}
+              </p>
+              <p class="description m-0">
+                {{question.description}}
+              </p>
+            </div>
+            <div class="row w-100 pl-2 d-flex detail-card-footer">
+              <div class="d-flex">
+                <div class="d-flex views mr-4">
+                  <span class="fa fa-eye mr-1"></span>
+                  <p>{{question.views}} Views</p>
+                </div>
+                <div>
+                  <p class="answers">{{question.answers}} Answers</p>
+                </div>
+              </div>
+              <div class="d-flex ml-auto justify-content-end" *ngIf="question.bestSolution==0">
+                <p>{{question.createdOn <!-- amTimeAgo -->}}</p>
+              </div>
+              <div class="d-flex ml-auto justify-content-end" *ngIf="question.bestSolution>=1">
+                <p class="text-success" style="font-size: 13px;">Resolved</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+       
+  
+      <div
+      *ngIf="userQuestion == null"
+      class="row m-0 details-right-block d-flex flex-column justify-content-center"
+    >
+      <div
+        class="d-flex flex-column justify-content-center"
+        style="width: 200px; margin-left: 110px; text-align: center"
+      >
+        <span class="fa fa-arrow-left"></span>
+        <p>Click on Questions to see all the details</p>
+      </div>
+    </div>
+  
+  
+    <div
+    *ngIf="userQuestion != null"
+    class="col-md-5 m-0 p-0 details-right-block"
+  >
+    <div class="row user-answer m-0">
+      <div class="row d-flex mt-3 mx-3" style="width: 100%">
+        <img
+          src="{{ userQuestion.profileImageUrl }}"
+          alt=""
+          style="border-radius: 20px"
+          class="mr-2"
+          width="30px"
+          height="30px"
+        />
+        <p class="username mr-2 mt-1">{{ userQuestion.userName }}</p>
+        <p class="time">{{ userQuestion.createdOn <!-- amTimeAgo --> }}</p>
+        <p class="report ml-auto mt-2">
+          <img src="../assets/Images/report.PNG" width=20px; height=20px; alt="">
+          Report this</p>
+      </div>
+      <div class="row mx-3 d-flex flex-column">
+        <p class="title m-0">{{ userQuestion.title }}</p>
+        <p class="description mt-1">{{ userQuestion.description }}</p>
+      </div>
+      <div class="row m-0 answer-count">
+        <p class="mx-3 my-1">Answers ({{ userQuestion.answers }})</p>
+      </div>
+    </div>
+    <app-answers-list [questionId]="questionId" [questionUserId]="questionUserId"></app-answers-list>
+      
+    
+  </div>
+    </div>
+  </div>
+  

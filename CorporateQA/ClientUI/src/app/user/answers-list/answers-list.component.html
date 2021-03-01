@@ -1,0 +1,65 @@
+<div class="row m-0 d-flex flex-column user-answers">
+    <div class="row user-answer-card m-0" *ngFor="let answer of answers">
+      <div class="row d-flex mt-3 mx-3" style="width: 100%">
+        <img
+          src={{answer.profileImageUrl}}
+          alt=""
+          style="border-radius: 20px"
+          class="mr-2"
+          width="30px"
+          height="30px"
+        />
+        <p class="username mr-2 mt-1">{{ answer.userName }}</p>
+        <p class="time">{{ answer.createdOn <!-- amTimeAgo --> }}</p>
+        <div class="ml-auto d-flex">
+            <span class="fa fa-thumbs-up mt-2 mr-1" (click)="postLikes(answer)"></span>
+            <p class="report ml-auto mt-2 mr-3">{{answer.likes?.length || 0}}</p>
+            <span class="fa fa-thumbs-down mt-2 mr-1" (click)="postDislikes(answer)" ></span>
+            <p class="report ml-auto mt-2">{{answer.dislikes?.length || 0}}</p>
+            
+        </div>
+        
+      </div>
+      <div class="row ml-4 mr-1 d-flex flex-column">
+        <p class="description ml-4">{{ answer.description }}</p>
+      </div>
+      <div class="row m-0 ml-4 mb-3 best-solution-checkbox" *ngIf="questionUserId==userId">
+        <input
+          type="checkbox"
+          name="bestSolution"
+          id="bestSolution"
+          class="ml-4 mr-1 mt-1"
+          *ngIf="answer.isBestSolution==true"
+          (click)="setBestSolution(answer.answerId,$event)"
+          value={{answer.isBestSolution}}
+          checked
+        />
+        <input
+          type="checkbox"
+          name="bestSolution"
+          id="bestSolution"
+          class="ml-4 mr-1 mt-1"
+          *ngIf="answer.isBestSolution==false"
+          (click)="setBestSolution(answer.answerId,$event)"
+          value={{answer.isBestSolution}}
+        />
+        <p class="m-0">Mark as best solution</p>
+      </div>
+    </div>
+
+  </div>
+<div class="m-2" *ngIf="questionUserId!=userId" >
+  <form [formGroup]="answerForm" (ngSubmit)="answerSubmit()">
+    <div class="editor">
+      <ngx-editor [editor]="editor" formControlName="answer" placeholder="Enter your answer here">
+      </ngx-editor>
+      <div class="d-flex">
+      <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
+      </ngx-editor-menu>
+      <button type="submit" class="ml-auto" style="border: none;" [disabled]="answerForm.invalid">
+        <span class="fa fa-paper-plane mr-1" style="font-size: 14px;"></span></button>
+      </div>
+    </div>
+  </form>
+</div>
+

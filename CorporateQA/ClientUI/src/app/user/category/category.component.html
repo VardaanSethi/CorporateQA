@@ -1,0 +1,133 @@
+<div class="row home-header mx-0">
+    <div class="ml-3" style="width: 350px">
+      <p>Categories</p>
+      <div class="input-wrapper">
+        <input
+          type="text"
+          name="search"
+          id="search"
+          placeholder="Search"
+          class="form-control"
+          (keyup)="searchCategory($event)"
+        />
+        <label for="search" class="fa fa-search input-icon"></label>
+      </div>
+    </div>
+    <div class="ml-3" style="width: 180px">
+      <p>Show</p>
+      <select name="show" id="show" class="form-control dropdown">
+        <option value="">Popular</option>
+      </select>
+    </div>
+    <div
+      class="ml-3 d-flex flex-column justify-content-center"
+      style="width: 180px"
+    >
+      <div class="d-flex mt-3 reset" (click)="initialiseCategoryForm()">
+        <span class="fa fa-repeat mt-1 mr-2" style="font-size: 12px"></span>
+        <p>Reset</p>
+      </div>
+    </div>
+  
+    <div
+      class="ml-auto d-flex justify-content-center"
+      style="width: 180px; height: 70px"
+    >
+      <input
+        type="button"
+        class="question-button"
+        (click)="openModal(content)"
+        value="+ Category"
+      />
+    </div>
+  </div>
+  
+  <div class="row mx-0 mt-2 p-2">
+    <div class="col-md-3 category-card" *ngFor="let category of categories">
+      <div class="d-flex justify-content-between">
+        <p class="card-name">{{ category.Name }}</p>
+        <p class="card-questions">({{ category.Questions }})</p>
+      </div>
+      <p class="card-description">{{ category.Description }}</p>
+      <p class="card-tag">Tagged {{category.CategoryQuestionCountThisWeek ||0}} this week, {{category.CategoryQuestionCountThisMonth || 0}} this month</p>
+    </div>
+  </div>
+  
+  <!--                           MODAL                       -->
+  
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <p class="modal-title">Add Category</p>
+      <button
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row my-3 mx-2">
+        <form
+          [formGroup]="categoryForm"
+          (ngSubmit)="onSubmit()"
+          style="width: 100%"
+        >
+          <div class="form-group col-md-8">
+            <label for="name">Category Name</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              formControlName="name"
+              placeholder="Enter Category name"
+              class="form-control input-field"
+            />
+            <p
+              *ngIf="formControls.name.invalid && formControls.name.touched"
+              class="text-danger"
+            >
+              Please fill this field
+            </p>
+          </div>
+          <div class="form-group col-md-8">
+            <label for="description">Description</label>
+            <textarea
+              name="description"
+              id="description"
+              cols="80"
+              rows="3"
+              formControlName="description"
+              placeholder="Enter your text here"
+              class="form-control input-field"
+            ></textarea>
+            <p
+              *ngIf="
+                formControls.description.invalid &&
+                formControls.description.touched
+              "
+              class="text-danger"
+            >
+              Please fill this field
+            </p>
+          </div>
+          <div class="form-group d-flex justify-content-end">
+            <input
+              type="button"
+              value="Cancel"
+              class="modalbtn-cancel"
+              (click)="modal.close('Close click')"
+            />
+            <input
+              type="submit"
+              value="Save"
+              class="modalbtn-save ml-2"
+              [disabled]="categoryForm.invalid"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </ng-template>
+  

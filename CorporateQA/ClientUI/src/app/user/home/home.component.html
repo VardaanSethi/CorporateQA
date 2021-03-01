@@ -1,0 +1,178 @@
+<div class="row home-header mx-0">
+  <div class="ml-3" style="width: 300px">
+    <p>Keywords</p>
+    <div class="input-wrapper">
+      <input
+        type="text"
+        name="search"
+        id="search"
+        placeholder="Search"
+        class="form-control"
+        (keyup)="searchQuestions($event)"
+      />
+      <label for="search" class="fa fa-search input-icon"></label>
+    </div>
+  </div>
+
+  <div class="ml-3" style="width: 180px">
+    <p>Category</p>
+    <select
+      name="category"
+      id="category"
+      class="form-control dropdown"
+      (change)="getQuestionsByCategory($event)"
+    >
+      <option value="">All</option>
+      <option value="{{ category.id }}" *ngFor="let category of categories">
+        {{ category.name }}
+      </option>
+    </select>
+  </div>
+  <div class="ml-3" style="width: 180px">
+    <p>Show</p>
+    <select
+      name="show"
+      id="show"
+      class="form-control dropdown"
+      (change)="getQuestionsByShow($event)"
+    >
+      <option value="">All</option>
+      <option value="1">My Questions</option>
+      <option value="2">My Participation</option>
+      <option value="3">Hot</option>
+      <option value="4">Solved</option>
+      <option value="5">Unsolved</option>
+    </select>
+  </div>
+
+  <div class="ml-3" style="width: 180px">
+    <p>Sort by</p>
+    <select
+      name="sort"
+      id="sort"
+      class="form-control dropdown"
+      (change)="getQuestionsByDate($event)"
+    >
+      <option value="">All</option>
+      <option value="1">Recent</option>
+      <option value="10">Last 10 Days</option>
+      <option value="30">Last 30 Days</option>
+    </select>
+  </div>
+  <div class="ml-3 d-flex flex-column justify-content-center">
+    <div class="d-flex mt-3 reset" (click)="initialiseQuestions()">
+      <span class="fa fa-repeat mt-1 mr-2" style="font-size: 12px"></span>
+      <p>Reset</p>
+    </div>
+  </div>
+  <div class="ml-auto mr-3 d-flex justify-content-center" style="height: 70px">
+    <input
+      type="button"
+      class="question-button"
+      (click)="openModal(content)"
+      value="+ Question"
+    />
+  </div>
+</div>
+
+<app-questions-list
+  [questions]="questions"
+  (initialiseQuestions)="initialiseQuestions()"
+></app-questions-list>
+
+<!--   MODAL    -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <p class="modal-title">Add Question</p>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row my-3 mx-2">
+      <form
+        [formGroup]="questionForm"
+        (ngSubmit)="questionSubmit()"
+        style="width: 100%"
+      >
+        <div class="form-group col-md-6">
+          <label for="title">Question</label>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            formControlName="title"
+            placeholder="Enter your Question"
+            class="form-control input-field"
+          />
+          <p
+            *ngIf="
+              questionFormControls.title.invalid &&
+              questionFormControls.title.touched
+            "
+            class="text-danger"
+          >
+            Please fill this field
+          </p>
+        </div>
+        <div class="form-group col-md-10">
+          <label>Description</label>
+          <div class="editor">
+            <ngx-editor
+              [editor]="editor"
+              placeholder="Enter your text here"
+              formControlName="description"
+            >
+            </ngx-editor>
+            <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
+            </ngx-editor-menu>
+          </div>
+          <p
+            *ngIf="
+              questionFormControls.description.invalid &&
+              questionFormControls.description.touched
+            "
+            class="text-danger"
+          >
+            Please fill this field
+          </p>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="category">Category</label>
+          <select
+            name="category"
+            id="category"
+            class="form-control input-field"
+            formControlName="category"
+          >
+            <option
+              value="{{ category.id }}"
+              *ngFor="let category of categories"
+            >
+              {{ category.name }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group d-flex justify-content-end">
+          <input
+            type="button"
+            value="Cancel"
+            class="modalbtn-cancel"
+            (click)="modal.close('Close click')"
+          />
+          <input
+            type="submit"
+            value="Save"
+            [disabled]="questionForm.invalid"
+            class="modalbtn-save ml-2"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>
