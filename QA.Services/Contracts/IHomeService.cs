@@ -8,19 +8,19 @@ namespace QA.Services.Contracts
 {
     public interface IHomeService
     {
-        List<QuestionView> GetQuestions();
-        List<QuestionView> GetQuestionsByCategory(int categoryId);
+        IEnumerable<QuestionView> GetQuestions();
+        IEnumerable<QuestionView> GetQuestionsByCategory(int categoryId);
         int PostQuestion(Question question);
         int PostAnswer(Answer answer);
         void PostLikes(List<string> likes, int answerId);
         void PostDislikes(List<string> dislikes, int answerId);
         void PostUpVotes(List<string> upVotes, int questionId);
         void PostViews(int views, int questionId);
-        List<QuestionView> GetSearchQuestions(string questionTitle);
+        IEnumerable<QuestionView> GetSearchQuestions(string questionTitle);
         void PostBestSolution(bool isBestSolution, int answerId);
-        List<QuestionView> GetQuestionsByDate(int date);
-        List<QuestionView> GetUnSolvedQuestions();
-        List<QuestionView> GetSolvedQuestions();
-        List<QuestionView> GetUserParticipation(string userId);
+        IEnumerable<QuestionView> GetQuestionsByDate(int date);
+        IEnumerable<QuestionView> GetUnSolvedQuestions();
+        IEnumerable<QuestionView> GetSolvedQuestions();
+        IEnumerable<QuestionView> GetUserParticipation(string userId);
     }
 }

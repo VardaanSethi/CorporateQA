@@ -1,24 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SignupComponent,SigninComponent,AuthenticationComponent } from './index';
+import { SignupComponent, SigninComponent, AuthenticationComponent } from './index';
 
 let routes: Routes = [
   {
-      path: "",
-      component:AuthenticationComponent,
-      children: [
-        {
-          path:'signin',component:SigninComponent
-        },
-        {
-          path:'',component:SigninComponent
-        
-        }
-        ,
-        {
-          path:'signup',component:SignupComponent
-        }
-      ]
+    path: "",
+    component: AuthenticationComponent,
+    children: [
+      {
+        path: 'signin', component: SigninComponent
+      },
+      {
+        path: '', component: SigninComponent
+
+      }
+      ,
+      {
+        path: 'signup', component: SignupComponent
+      }
+    ]
   }
 ]
 

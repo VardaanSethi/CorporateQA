@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Dapper;
 using System.Linq;
+using Dapper.Contrib.Extensions;
 
 namespace QA.Services
 {
@@ -19,36 +20,30 @@ namespace QA.Services
             this.Db = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
             this.Mapper = mapper;
         }
-        public List<UsersView> GetUsers()
+        public IEnumerable<UsersView> GetUsers()
         {
             var sql = "SELECT * FROM UsersView";
-            return this.Mapper.Map<List<UsersView>>(this.Db.Query<QA.Data.UsersView>(sql).ToList());
+            return this.Mapper.Map<IEnumerable<UsersView>>(this.Db.Query<QA.Data.UsersView>(sql));
         }
 
         public UsersView GetUser(string userId)
         {
-            var sql = $"SELECT * FROM UsersView WHERE Id='{userId}'";
-            return this.Mapper.Map<UsersView>(this.Db.Query<UsersView>(sql).FirstOrDefault());
+            return this.Mapper.Map<UsersView>(this.Db.Query<QA.Data.UsersView>($"SELECT * FROM UsersView WHERE Id='{userId}'").FirstOrDefault());
         }
 
-        public List<QuestionView> GetUserQuestions(string userId)
+        public IEnumerable<QuestionView> GetUserQuestions(string userId)
         {
-            var sql = $"SELECT * FROM QuestionsView WHERE UserId='{userId}'";
-            return this.Mapper.Map<List<QuestionView>>(this.Db.Query<QuestionView>(sql).ToList());
+            return this.Mapper.Map<IEnumerable<QuestionView>>(this.Db.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView WHERE UserId='{userId}'").ToList());
         }
 
-        public List<UsersView> GetSearchUser(string userName)
+        public IEnumerable<UsersView> GetSearchUser(string userName)
         {
-            var sql = $"SELECT * FROM UsersView WHERE UserName LIKE '{userName}%'";
-            return this.Mapper.Map<List<UsersView>>(this.Db.Query<QA.Data.UsersView>(sql).ToList());
+            return this.Mapper.Map<IEnumerable<UsersView>>(this.Db.Query<QA.Data.UsersView>($"SELECT * FROM UsersView WHERE UserName LIKE '{userName}%'"));
         }
 
-        public List<AnswerView> GetAnswers(int questionId)
+        public IEnumerable<AnswerView> GetAnswers(int questionId)
         {
-            var sql = $"SELECT * FROM AnswersView WHERE QuestionId={questionId}";
-            var answers = this.Mapper.Map<List<AnswerView>>(this.Db.Query<QA.Data.AnswerView>(sql).ToList());
-            return answers;
-
+            return this.Mapper.Map<IEnumerable<AnswerView>>(this.Db.Query<QA.Data.AnswerView>($"SELECT * FROM AnswersView WHERE QuestionId={questionId}"));
         }
     }
 }

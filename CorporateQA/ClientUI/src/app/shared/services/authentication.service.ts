@@ -1,5 +1,4 @@
 import { HttpClient } from '@angular/common/http';
-import { CompileShallowModuleMetadata } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 
 import { LoginResponse, Response } from '../models/response.model';
@@ -21,7 +20,6 @@ export class AuthenticationService {
     this.profileSource = localStorage.getItem('userId') != null ? localStorage.getItem('profileSource') : '';
   }
   signUp(data: any) {
-    console.log(data);
     return this.http.post<Response>(this.rootUrl + '/signup', data);
   }
 

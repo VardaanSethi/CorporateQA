@@ -16,5 +16,10 @@ namespace QA.Models
         public List<string> UpVotes { get; set; }
         public int Views { get; set; }
         public DateTime CreatedOn { get; set; }
+
+        public Question()
+        {
+            this.CreatedOn = DateTime.Now;
+        }
     }
 }

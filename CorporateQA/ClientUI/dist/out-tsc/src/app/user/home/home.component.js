@@ -38,6 +38,7 @@ let HomeComponent = class HomeComponent {
     initialiseQuestions() {
         this.homeService.getQuestions().subscribe((res) => {
             this.questions = res;
+            console.log(this.questions);
         });
     }
     getQuestionsByCategory(event) {
@@ -55,6 +56,7 @@ let HomeComponent = class HomeComponent {
     }
     questionSubmit() {
         var questionValue = this.questionForm.value;
+        console.log(questionValue);
         var description = questionValue.description.replace(/(<([^>]+)>)/gi, '');
         this.question = new Question(questionValue.title, description, questionValue.category, localStorage.getItem('userId'));
         this.homeService.postQuestion(this.question).subscribe((res) => {

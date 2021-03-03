@@ -4,6 +4,10 @@ body {
   box-sizing: border-box;
   height: 100vh;
 }
+.navigation-bar {
+  height: 100vh;
+  background-color: #3e4249;
+}
 
 .top-navigation {
   width: 100%;
@@ -11,10 +15,10 @@ body {
     background-color: #76618b;
     height: 50px;
     width: 100%;
-    p{
+    p {
       color: white;
       font-size: 12px;
-      margin-right:20px;
+      margin-right: 20px;
       margin-top: 15px;
     }
   }
@@ -22,39 +26,40 @@ body {
     width: 100%;
     height: 30px;
     background-color: white;
-    .tab-navigation{
-        list-style-type: none;
-        margin-top: 10px;
-        padding:0px 0px 10px 15px;
-        border-bottom: 1px solid rgb(201, 201, 201);
-       a{
-        text-decoration: none;  
+    .tab-navigation {
+      list-style-type: none;
+      margin-top: 10px;
+      padding: 0px 0px 10px 15px;
+      border-bottom: 1px solid rgb(201, 201, 201);
+      a {
+        text-decoration: none;
         color: black;
-        cursor: pointer; 
-        li{
-            margin-right: 35px;
-            font-size: 12px;
-            font-weight: 400;
+        cursor: pointer;
+        li {
+          margin-right: 35px;
+          font-size: 12px;
+          font-weight: 400;
         }
       }
     }
   }
 }
-.home-header{
+.home-header {
   border-bottom: 1px solid rgb(201, 201, 201);
   padding: 10px 0px 20px 0px;
   background-color: #f8f8f9;
-  p{
+  p {
     padding: 0;
     margin: 0px 0px 10px 0px;
     font-size: 13px;
   }
-  input[type="text"],.dropdown{
+  input[type="text"],
+  .dropdown {
     height: 35px;
     border-radius: 3px;
     font-size: 12px;
   }
-  .question-button{
+  .question-button {
     margin-top: 28px;
     background-color: #76618b;
     border: none;
@@ -65,13 +70,13 @@ body {
     padding: 0px 15px;
   }
 }
-.modal-header{
+.modal-header {
   background-color: #515968;
-  p{
-    color:white;
+  p {
+    color: white;
   }
 }
-.input-icon{
+.input-icon {
   font-size: 12px;
   margin-left: 2px;
   color: #a4aab2;
@@ -80,39 +85,38 @@ body {
   top: calc(50% - 0.5em); /* Keep icon in center of input, regardless of the input height */
 }
 
-.input-wrapper{
+.input-wrapper {
   position: relative;
-  input{
+  input {
     padding-left: 22px;
   }
 }
-.modal-body{
-  label{
+.modal-body {
+  label {
     font-size: 13px;
   }
-  .input-field{
+  .input-field {
     font-size: 12px;
   }
-  p{
+  p {
     font-size: 13px;
   }
-  textarea{
+  textarea {
     resize: none;
   }
-  .modal-button-style{
+  .modal-button-style {
     font-size: 12px;
     color: white;
     border: none;
     width: 70px;
     height: 30px;
     border-radius: 4px;
-
   }
-  .modalbtn-cancel{
+  .modalbtn-cancel {
     background-color: #a4aab2;
-    @extend .modal-button-style;    
+    @extend .modal-button-style;
   }
-  .modalbtn-save{
+  .modalbtn-save {
     background-color: #76618b;
     @extend .modal-button-style;
   }
@@ -121,179 +125,181 @@ body {
   }
 }
 
-.reset{
+.reset {
   color: #757779;
   cursor: pointer;
-  p{
+  p {
     padding: 0;
     margin: 0;
     font-size: 12px;
   }
-
 }
-.category-card{
+.category-card {
   border: 1px solid rgb(219, 216, 216);
   border-radius: 3px;
   background-color: white;
   margin: 10px;
   padding: 10px 5px;
   height: 150px;
-  .card-name{
+  .card-name {
     color: black;
     font-size: 14px;
     font-weight: 500;
     margin: 0px 0px 10px 0px;
   }
-  .card-questions{
+  .card-questions {
     font-size: 11px;
   }
-  .card-description,.card-tag{
+  .card-description,
+  .card-tag {
     font-size: 11px;
     color: #757779;
   }
-  .card-tag{
+  .card-tag {
     position: absolute;
     bottom: 0;
   }
 }
 
-.user-card,.user-details{
+.user-card,
+.user-details {
   border: 1px solid rgb(219, 216, 216);
   border-radius: 3px;
   background-color: white;
   margin: 10px;
-  padding: 10px 0px 0px 0px ;
+  padding: 10px 0px 0px 0px;
   height: 170px;
   width: 321px;
   position: relative;
   cursor: pointer;
-  p{
+  p {
     margin: 0;
   }
-  .user-name{
+  .user-name {
     font-size: 14px;
     font-weight: 500;
   }
-  .user-jobrole,.user-department{
+  .user-jobrole,
+  .user-department {
     font-size: 12px;
     color: #757779;
   }
-  .user-icons{
+  .user-icons {
     margin-top: 10px;
     font-size: 13px;
     color: #757779;
-    .fa-thumbs-up{
+    .fa-thumbs-up {
       font-size: 16px;
       color: #86c06a;
     }
-    .fa-thumbs-down{
+    .fa-thumbs-down {
       font-size: 16px;
       color: #ef6868;
     }
   }
-  .user-card-footer{
+  .user-card-footer {
     height: 50px;
     position: absolute;
     bottom: 0;
     width: 100%;
     border-top: 1px solid rgb(219, 216, 216);
-    .footer-block{
-      width:107px;
+    .footer-block {
+      width: 107px;
       height: 100%;
       font-size: 10px;
-      color:#757779;
+      color: #757779;
     }
-    .footer-block-border{
-      border-width:0px 1px;
-      border-style:  solid;
-      border-color:  rgb(219, 216, 216);  
+    .footer-block-border {
+      border-width: 0px 1px;
+      border-style: solid;
+      border-color: rgb(219, 216, 216);
     }
-    .footer-block-count{
+    .footer-block-count {
       font-size: 13px;
       color: black;
       margin-top: 5px;
     }
   }
 }
-.profile-image{
+.profile-image {
   width: 40px;
   height: 40px;
   border-radius: 20px;
 }
 
-.back-to-user{
-  span{
+.back-to-user {
+  span {
     font-weight: lighter;
     font-size: 16px;
   }
   font-size: 14px;
 }
 
-.user-details{
+.user-details {
   width: 100%;
-  .user-details-block{
+  .user-details-block {
     height: 110px;
     border-bottom: 1px solid rgb(219, 216, 216);
   }
-  .user-details-block2{
-    p{
-      font-size:13px;
+  .user-details-block2 {
+    p {
+      font-size: 13px;
     }
   }
-    .block{
+  .block {
     width: 120px;
     height: 90px;
     margin-right: 10px;
     background-color: #f4f5f8;
     font-size: 11px;
-    color:#757779;
+    color: #757779;
     padding-top: 20px;
-    .user-block-count{
+    .user-block-count {
       font-size: 14px;
       color: black;
       margin-bottom: 10px;
     }
   }
-
 }
 
-.details-block{
-  height: 140vh;
+.details-block {
+  height: 75vh;
   border: 1px solid rgb(201, 201, 201);
   border-radius: 5px;
-  .details-left-block{
+  .details-left-block {
+    overflow-y: scroll;
     background-color: white;
-    border-right:1px solid rgb(201, 201, 201); 
+    border-right: 1px solid rgb(201, 201, 201);
     height: 100%;
-    .detail-card{
-      height:130px;
-      border-bottom:1px solid rgb(201, 201, 201);
-      &:hover{
+    .detail-card {
+      height: 130px;
+      border-bottom: 1px solid rgb(201, 201, 201);
+      &:hover {
         background-color: #f9f8f6;
         border-right: 4px solid #76618b;
         cursor: pointer;
       }
-      .title{
-        font-size:13px;
+      .title {
+        font-size: 13px;
       }
-      .description{
+      .description {
         font-size: 11px;
-        color:#757779
+        color: #757779;
       }
-      .detail-card-footer{
+      .detail-card-footer {
         position: absolute;
         bottom: 0;
-        .views{
-          span{
-          font-size: 14px;
-          color: #757779;
+        .views {
+          span {
+            font-size: 14px;
+            color: #757779;
           }
         }
-        p{
+        p {
           font-size: 10px;
           color: #757779;
         }
-        .answers{
+        .answers {
           background-color: #d9e5f0;
           border: 1px solid rgb(201, 201, 201);
           border-radius: 3px;
@@ -302,94 +308,96 @@ body {
       }
     }
   }
-  .details-right-block{
-    height: 100%;
-    span{
-      font-size:30px;
+  .details-right-block {
+    height: 75vh;
+    span {
+      font-size: 30px;
       font-weight: 100;
       margin-bottom: 10px;
       color: #757779;
     }
-    p{
+    p {
       font-size: 17px;
-      color:#757779;
+      color: #757779;
     }
-    .user-answer{
+    .user-answer {
       width: 100%;
       border-bottom: 1px solid rgb(201, 201, 201);
-      background-color:#f2f1f0;
-      p{
+      background-color: #f2f1f0;
+      p {
         font-size: 14px;
       }
-      .username,.title{
+      .username,
+      .title {
         color: black;
       }
-      .time{
+      .time {
         margin-top: 10px;
         font-size: 9px;
       }
-      .report{
+      .report {
         font-size: 11px;
-        color:#76618b;
+        color: #76618b;
       }
-      .description{
+      .description {
         font-size: 12px;
       }
-      .answer-count{
+      .answer-count {
         width: 100%;
         border-top: 1px solid rgb(201, 201, 201);
         background-color: #e4e6e9;
-        p{
-        color: black;
-        font-size:12px;
+        p {
+          color: black;
+          font-size: 12px;
         }
       }
     }
 
-    .user-answers{
+    .user-answers {
       width: 100%;
-      height:80vh;
+      height: 40vh;
       overflow-y: scroll;
       background-color: #f8f8f9;
-      .user-answer-card{
-        height:min-content;
-        span{
+      .user-answer-card {
+        height: min-content;
+        span {
           font-size: 14px;
         }
-        .fa-thumbs-up{
+        .fa-thumbs-up {
           color: #86c06a;
         }
-        .fa-thumbs-down{
+        .fa-thumbs-down {
           color: #ef6868;
         }
-      p{
-        font-size: 14px;
-      }
-      .username,.title{
-        color: black;
-      }
-      .time{
-        margin-top: 10px;
-        font-size: 10px;
-      }
-      .report{
-        font-size: 11px;
-        color:#76618b;
-      }
-      .description{
-        font-size: 12px;
-        color: black;
-      }
-      .best-solution-checkbox{
-        p{
+        p {
+          font-size: 14px;
+        }
+        .username,
+        .title {
+          color: black;
+        }
+        .time {
+          margin-top: 10px;
+          font-size: 10px;
+        }
+        .report {
+          font-size: 11px;
+          color: #76618b;
+        }
+        .description {
           font-size: 12px;
           color: black;
         }
-        input[type="checkbox"]:checked{
-          background-color: #86c06a;
+        .best-solution-checkbox {
+          p {
+            font-size: 12px;
+            color: black;
+          }
+          input[type="checkbox"]:checked {
+            background-color: #86c06a;
+          }
         }
       }
-    }
     }
   }
 }
@@ -401,22 +409,22 @@ body {
   .NgxEditor__MenuBar {
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
-    margin-bottom:5px;
-    width:70px;
+    margin-bottom: 5px;
+    width: 70px;
   }
 
   .NgxEditor {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border: none;
-    height:110px;
+    height: 110px;
     padding: 0;
     padding-bottom: 10px;
-    p{
-    margin: 0;
-    padding: 0;
-    font-size: 14px;
-      span{
+    p {
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+      span {
         font-size: 13px;
       }
     }
@@ -431,4 +439,8 @@ body {
       white-space: pre !important;
     }
   }
+}
+
+.scrollable {
+  overflow-y: scroll;
 }

@@ -8,19 +8,19 @@ import { AuthenticationService } from './authentication.service';
 export class AuthGuardService {
 
   constructor(
-    public authenticationService:AuthenticationService,
-    public router:Router,
-  
+    public authenticationService: AuthenticationService,
+    public router: Router,
+
   ) { }
 
-  canActivate(route:ActivatedRouteSnapshot):boolean{
-    var role=route.data.role;
-    if(this.authenticationService.isAuthenticated() && role==localStorage.getItem("role")){
+  canActivate(route: ActivatedRouteSnapshot): boolean {
+    var role = route.data.role;
+    if (this.authenticationService.isAuthenticated() && role == localStorage.getItem("role")) {
       return true;
-    }else{
+    } else {
       this.router.navigate(['authentication']);
       return false;
-      
+
     }
   }
 }

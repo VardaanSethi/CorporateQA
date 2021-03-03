@@ -6,67 +6,67 @@ import { Injectable } from '@angular/core';
 })
 export class HomeService {
 
-  rootUrl="https://localhost:5001/api/home";
+  rootUrl = "https://localhost:5001/api/home";
 
   constructor(
-    private http:HttpClient
+    private http: HttpClient
   ) { }
 
-  getQuestions(){
+  getQuestions() {
 
     return this.http.get(`${this.rootUrl}/questions`);
   }
 
-  getQuestionsByCategory(categoryId:any){
+  getQuestionsByCategory(categoryId: any) {
     return this.http.get(`${this.rootUrl}/questionsbycategory/${categoryId}`);
   }
 
-  postQuestion(question:any){
-    return this.http.post(`${this.rootUrl}/question`,question);
+  postQuestion(question: any) {
+    return this.http.post(`${this.rootUrl}/question`, question);
   }
 
-  postAnswer(answer:any){
-    return this.http.post(`${this.rootUrl}/answer`,answer);
+  postAnswer(answer: any) {
+    return this.http.post(`${this.rootUrl}/answer`, answer);
   }
 
-  postLikes(likes:any,answerId:any){
-    return this.http.post(`${this.rootUrl}/likes/${answerId}`,likes);
+  postLikes(likes: any, answerId: any) {
+    return this.http.post(`${this.rootUrl}/likes/${answerId}`, likes);
   }
 
-  postDislikes(dislikes:any,answerId:any){
-    return this.http.post(`${this.rootUrl}/dislikes/${answerId}`,dislikes);
+  postDislikes(dislikes: any, answerId: any) {
+    return this.http.post(`${this.rootUrl}/dislikes/${answerId}`, dislikes);
   }
 
-  postUpVotes(upVotes:any,questionId:any){
-    return this.http.post(`${this.rootUrl}/upvotes/${questionId}`,upVotes);
+  postUpVotes(upVotes: any, questionId: any) {
+    return this.http.post(`${this.rootUrl}/upvotes/${questionId}`, upVotes);
   }
 
-  postViews(views:any,questionId:any){
-    return this.http.post(`${this.rootUrl}/views/${questionId}`,views);
+  postViews(views: any, questionId: any) {
+    return this.http.post(`${this.rootUrl}/views/${questionId}`, views);
   }
 
-  getSearchQuestions(questionTitle:any){
+  getSearchQuestions(questionTitle: any) {
     return this.http.get(`${this.rootUrl}/searchquestions/${questionTitle}`);
   }
 
-  postBestSolution(isBestSolution:any,answerId:any){
+  postBestSolution(isBestSolution: any, answerId: any) {
     return this.http.get(`${this.rootUrl}/bestsolution/${answerId}/${isBestSolution}`);
   }
 
-  getQuestionsByDate(date:any){
+  getQuestionsByDate(date: any) {
     return this.http.get(`${this.rootUrl}/questionsbydate/${date}`);
   }
 
-  getSolvedQuestions(){
+  getSolvedQuestions() {
     return this.http.get(`${this.rootUrl}/solvedquestions`);
   }
 
-  
-  getUnSolvedQuestions(){
+
+  getUnSolvedQuestions() {
     return this.http.get(`${this.rootUrl}/unsolvedquestions`);
   }
 
-  getUserParticipation(userId:any){
+  getUserParticipation(userId: any) {
     return this.http.get(`${this.rootUrl}/userparticipation/${userId}`);
   }
 }

@@ -5,28 +5,28 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
-  rootUrl="https://localhost:5001/api/user";
+  rootUrl = "https://localhost:5001/api/user";
 
   constructor(
-    private http:HttpClient
+    private http: HttpClient
   ) { }
 
-  getUsers(){
+  getUsers() {
     return this.http.get(`${this.rootUrl}/users`);
   }
 
-  getUser(userId:any){
+  getUser(userId: any) {
     return this.http.get(`${this.rootUrl}/user/${userId}`);
   }
 
-  getUserQuestions(userId:any){
+  getUserQuestions(userId: any) {
     return this.http.get(`${this.rootUrl}/userquestions/${userId}`);
   }
-  searchUser(userName:any){
+  searchUser(userName: any) {
     return this.http.get(`${this.rootUrl}/searchuser/${userName}`);
   }
 
-  getAnswers(questionId:any){
+  getAnswers(questionId: any) {
     return this.http.get(`${this.rootUrl}/answers/${questionId}`);
   }
 }

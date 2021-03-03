@@ -29,5 +29,4 @@ export class NavigationComponent implements OnInit {
     this.authenticationService.setUserId();
     this.router.navigate(['authentication']);
   }
-
 }

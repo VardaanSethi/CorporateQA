@@ -10,15 +10,15 @@ export class UserDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private userService: UserService
-  ) {}
-  
-  userId:any;
+  ) { }
+
+  userId: any;
   user: any;
-  questions:any;
-  
+  questions: any;
+
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      this.userId=params.get("userId");
+      this.userId = params.get("userId");
     });
     this.userService.getUser(this.userId).subscribe((res) => {
       this.user = res;
@@ -26,9 +26,9 @@ export class UserDetailsComponent implements OnInit {
     });
   }
 
-  initialiseUserQuestions(){
-    this.userService.getUserQuestions(this.userId).subscribe(res=>{
-      this.questions=res;
+  initialiseUserQuestions() {
+    this.userService.getUserQuestions(this.userId).subscribe(res => {
+      this.questions = res;
     })
   }
 

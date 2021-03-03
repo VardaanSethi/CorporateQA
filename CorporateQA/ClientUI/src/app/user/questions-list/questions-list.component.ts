@@ -6,40 +6,40 @@ import { HomeService } from "src/app/shared/services/home.service";
   selector: 'app-questions-list',
   templateUrl: './questions-list.component.html'
 })
-export class QuestionsListComponent implements OnInit,OnChanges {
+export class QuestionsListComponent implements OnInit, OnChanges {
 
-  @Input() questions:any;
-  @Output("initialiseQuestions") initialiseQuestions:any=new EventEmitter();
-  
+  @Input() questions: any;
+  @Output("initialiseQuestions") initialiseQuestions: any = new EventEmitter();
+
   constructor(
-    private homeService:HomeService
+    private homeService: HomeService
   ) { }
 
-  userQuestion:any=null;
-  questionUserId:any;
-  questionId:any;
-  
+  userQuestion: any = null;
+  questionUserId: any;
+  questionId: any;
+
   ngOnInit(): void {
-      
+
   }
 
-  ngOnChanges(){
+  ngOnChanges() {
   }
 
   getAnswers(question: any) {
     this.userQuestion = question;
-    this.questionUserId=this.userQuestion.userId;
+    this.questionUserId = this.userQuestion.userId;
     this.questionId = question.questionId;
-    this.homeService.postViews(question.views,this.questionId).subscribe(res=>{
-    
+    this.homeService.postViews(question.views, this.questionId).subscribe(res => {
+
     })
   }
-  postUpVotes(question:any){
-    if(question.upVotes.indexOf(localStorage.getItem("userId"))==-1){
+  postUpVotes(question: any) {
+    if (question.upVotes.indexOf(localStorage.getItem("userId")) == -1) {
       question.upVotes.push(localStorage.getItem("userId"));
-      this.homeService.postUpVotes(question.upVotes,question.questionId).subscribe(res=>{
-       this.initialiseQuestions.emit();
-     })
-  }
+      this.homeService.postUpVotes(question.upVotes, question.questionId).subscribe(res => {
+        this.initialiseQuestions.emit();
+      })
+    }
   }
 }

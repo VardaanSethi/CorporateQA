@@ -16,7 +16,7 @@ export class AnswersListComponent implements OnChanges, OnInit {
   constructor(
     private userService: UserService,
     private homeService: HomeService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.initialiseAnswerForm();
@@ -117,10 +117,10 @@ export class AnswersListComponent implements OnChanges, OnInit {
   setBestSolution(answerId: any, event: any) {
     event.target.value == true
       ? this.homeService.postBestSolution(false, answerId).subscribe((res) => {
-          this.initialiseAnswers();
-        })
+        this.initialiseAnswers();
+      })
       : this.homeService.postBestSolution(true, answerId).subscribe((res) => {
-          this.initialiseAnswers();
-        });
+        this.initialiseAnswers();
+      });
   }
 }

@@ -4,16 +4,16 @@ import { MomentModule } from 'ngx-moment';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxEditorModule } from 'ngx-editor';
 
-import {UserComponent,HomeComponent,CategoryComponent,UserDetailsComponent,UsersListComponent,AnswersListComponent,QuestionsListComponent} from './index'
+import { UserComponent, HomeComponent, CategoryComponent, UserDetailsComponent, UsersListComponent, AnswersListComponent, QuestionsListComponent } from './index'
 import { UserRoutingModule } from './user-routing.module';
 
 @NgModule({
   declarations: [HomeComponent,
-    UserComponent, 
-    CategoryComponent, 
-    UsersListComponent, 
-    UserDetailsComponent, 
-    AnswersListComponent, 
+    UserComponent,
+    CategoryComponent,
+    UsersListComponent,
+    UserDetailsComponent,
+    AnswersListComponent,
     QuestionsListComponent
   ],
   imports: [
@@ -27,7 +27,7 @@ import { UserRoutingModule } from './user-routing.module';
     }),
     NgxEditorModule
   ],
-  exports:[
+  exports: [
     HomeComponent,
     CategoryComponent,
     UsersListComponent,

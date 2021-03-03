@@ -30,14 +30,12 @@ namespace QA.Services
 
         public IEnumerable<object> GetCategoryQuestionLookup()
         {
-            var sql = "SELECT * FROM CategoriesView";
-            return this.Db.Query<object>(sql);
+            return this.Db.Query<object>("SELECT * FROM CategoriesView");
         }
 
         public IEnumerable<object> SearchCategories(string category)
         {
-            var sql = $"SELECT * FROM CategoriesView WHERE Name LIKE '{category}%'";
-            return this.Db.Query<object>(sql);
+            return this.Db.Query<object>($"SELECT * FROM CategoriesView WHERE Name LIKE '{category}%'");
         }
 
         public int PostCategory(Category category)

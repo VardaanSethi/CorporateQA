@@ -17,7 +17,7 @@ export class SigninComponent implements OnInit {
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
-   ) {}
+  ) { }
 
   ngOnInit(): void {
     this.initializeSigninForm();
@@ -39,15 +39,15 @@ export class SigninComponent implements OnInit {
       .signin(this.signinForm.value)
       .subscribe((res) => {
         if (res.status != 'Error') {
-          localStorage.setItem('userId',res.id);
+          localStorage.setItem('userId', res.id);
           localStorage.setItem('token', res.token);
           localStorage.setItem('role', res.role);
-          localStorage.setItem('userName',res.user);
-          localStorage.setItem('profileSource',res.profileImageUrl);
+          localStorage.setItem('userName', res.user);
+          localStorage.setItem('profileSource', res.profileImageUrl);
           this.role = localStorage.getItem('role');
           alert(res.message);
           this.router.navigate([`/user/home`])
-          
+
         } else {
           alert(res.message);
           this.initializeSigninForm();

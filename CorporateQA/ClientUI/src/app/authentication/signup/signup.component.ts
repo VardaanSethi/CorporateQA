@@ -14,17 +14,17 @@ export class SignupComponent implements OnInit {
   signupForm: any;
   status = '';
   message = '';
-  profileSrc='';
+  profileSrc = '';
   constructor(
     private http: HttpClient,
     private authenticationService: AuthenticationService,
-    ) {}
+  ) { }
 
   ngOnInit(): void {
     this.inititlaiseSignupForm();
   }
   inititlaiseSignupForm() {
-    this.profileSrc='';
+    this.profileSrc = '';
     this.signupForm = new FormGroup({
       username: new FormControl('', Validators.required),
       email: new FormControl('', [
@@ -38,10 +38,10 @@ export class SignupComponent implements OnInit {
         ),
       ]),
       jobrole: new FormControl('', Validators.required),
-      department:new FormControl('',Validators.required),
-      joblocation:new FormControl('',Validators.required),
-      profile:new FormControl('',Validators.required),
-      profileImageUrl:new FormControl('',Validators.required)
+      department: new FormControl('', Validators.required),
+      joblocation: new FormControl('', Validators.required),
+      profile: new FormControl('', Validators.required),
+      profileImageUrl: new FormControl('', Validators.required)
     });
   }
   get formControls() {

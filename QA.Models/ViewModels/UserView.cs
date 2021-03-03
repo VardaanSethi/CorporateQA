@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Dapper.Contrib.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace QA.Models.ViewModels
 {
+    [Table("UsersView")]
     public class UsersView
     {
         public string Id { get; set; }

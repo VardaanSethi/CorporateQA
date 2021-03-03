@@ -7,10 +7,10 @@ namespace QA.Services.Contracts
 {
     public interface IUserService
     {
-        List<UsersView> GetUsers();
+        IEnumerable<UsersView> GetUsers();
         UsersView GetUser(string userId);
-        List<QuestionView> GetUserQuestions(string userId);
-        List<UsersView> GetSearchUser(string userName);
-        List<AnswerView> GetAnswers(int questionId);
+        IEnumerable<QuestionView> GetUserQuestions(string userId);
+        IEnumerable<UsersView> GetSearchUser(string userName);
+        IEnumerable<AnswerView> GetAnswers(int questionId);
     }
 }

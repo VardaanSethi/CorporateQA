@@ -19,9 +19,6 @@ namespace QA.Data
         public int Views { get; set; }
         public DateTime CreatedOn { get; set; }
 
-        public Question()
-        {
-            this.CreatedOn = DateTime.Now;
-        }
+        
     }
 }

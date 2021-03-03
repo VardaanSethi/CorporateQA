@@ -4,7 +4,7 @@ using System.Text;
 using Dapper.Contrib.Extensions;
 namespace QA.Models
 {
-    
+    [Table("Category")]
     public class Category
     {
         public int Id { get; set; }

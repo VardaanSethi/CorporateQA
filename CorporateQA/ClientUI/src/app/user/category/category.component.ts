@@ -12,7 +12,7 @@ export class CategoryComponent implements OnInit {
   constructor(
     private categoryService: CategoryService,
     private modelService: NgbModal
-  ) {}
+  ) { }
 
   categories: any;
   categoryForm: any;
@@ -26,7 +26,6 @@ export class CategoryComponent implements OnInit {
       description: new FormControl('', Validators.required),
     });
     this.categoryService.getCategoriesList().subscribe((res) => {
-      console.log(res);
       this.categories = res;
     });
   }
@@ -46,9 +45,9 @@ export class CategoryComponent implements OnInit {
       });
   }
 
-  searchCategory(event:any){
-    (event.target.value=='')?this.initialiseCategoryForm():this.categoryService.searchCategories(event.target.value).subscribe(res=>{
-      this.categories=res;
+  searchCategory(event: any) {
+    (event.target.value == '') ? this.initialiseCategoryForm() : this.categoryService.searchCategories(event.target.value).subscribe(res => {
+      this.categories = res;
     })
   }
 }

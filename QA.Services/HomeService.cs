@@ -24,24 +24,20 @@ namespace QA.Services
             this.Mapper = mapper;
         }
 
-        public List<QuestionView> GetQuestions()
+        public IEnumerable<QuestionView> GetQuestions()
         {
-            var sql = $"SELECT * FROM QuestionsView";
-            return this.Mapper.Map<List<QuestionView>>(this.Db.Query<QA.Data.QuestionView>(sql).ToList());
+            return this.Mapper.Map<IEnumerable<QuestionView>>(this.Db.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView"));
         }
 
-        public List<QuestionView> GetQuestionsByCategory(int categoryId)
+        public IEnumerable<QuestionView> GetQuestionsByCategory(int categoryId)
         {
-            var sql = $"SELECT * FROM QuestionsView WHERE CategoryId={categoryId}";
-            return this.Mapper.Map<List<QuestionView>>(this.Db.Query<QA.Data.QuestionView>(sql).ToList());
-
+            return this.Mapper.Map<IEnumerable<QuestionView>>(this.Db.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView WHERE CategoryId={categoryId}"));
         }
 
         public int PostQuestion(Question question)
         {
-            return (int)this.Db.Insert<QA.Data.Question>(this.Mapper.Map<QA.Data.Question>(question));
+            return  (int)this.Db.Insert<QA.Data.Question>(this.Mapper.Map<QA.Data.Question>(question));
         }
-
 
         public int PostAnswer(Answer answer)
         {
@@ -75,11 +71,11 @@ namespace QA.Services
             this.Db.Update<QA.Data.Question>(this.Mapper.Map<QA.Data.Question>(question));
         }
 
-        public List<QuestionView> GetSearchQuestions(string questionTitle)
+        public IEnumerable<QuestionView> GetSearchQuestions(string questionTitle)
         {
-            var sql = $"SELECT * FROM QuestionsView WHERE Title LIKE '{questionTitle}%'";
-            return this.Mapper.Map<List<QuestionView>>(this.Db.Query<QA.Data.QuestionView>(sql).ToList());
+            return this.Mapper.Map<IEnumerable<QuestionView>>(this.Db.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView WHERE Title LIKE '{questionTitle}%'"));
         }
+
         public void PostBestSolution(bool isBestSolution, int answerId)
         {
             var answer = this.Mapper.Map<Answer>(this.Db.Get<QA.Data.Answer>(answerId));
@@ -87,26 +83,25 @@ namespace QA.Services
             this.Db.Update<QA.Data.Answer>(this.Mapper.Map<QA.Data.Answer>(answer));
         }
 
-        public List<QuestionView> GetQuestionsByDate(int date)
+        public IEnumerable<QuestionView> GetQuestionsByDate(int date)
         {
-            var sql = $"SELECT * FROM QuestionsView WHERE CreatedOn>'{DateTime.Now.AddDays(-date)}'";
-            return this.Mapper.Map<List<QuestionView>>(this.Db.Query<QA.Data.QuestionView>(sql).ToList());
+            var requiredDate = DateTime.Now.AddDays(-date).ToString("yyyy-MM-dd hh:mm:ss.sss");
+            return this.Mapper.Map<IEnumerable<QuestionView>>(this.Db.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView WHERE CreatedOn>'{requiredDate}'"));
         }
 
-        public List<QuestionView> GetSolvedQuestions()
+        public IEnumerable<QuestionView> GetSolvedQuestions()
         {
-            var sql = $"SELECT * FROM QuestionsView WHERE BestSolution IS NOT NULL";
-            return this.Mapper.Map<List<QuestionView>>(this.Db.Query<QA.Data.QuestionView>(sql).ToList());
+            return this.Mapper.Map<IEnumerable<QuestionView>>(this.Db.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView WHERE BestSolution IS NOT NULL"));
         }
-        public List<QuestionView> GetUnSolvedQuestions()
+
+        public IEnumerable<QuestionView> GetUnSolvedQuestions()
         {
-            var sql = $"SELECT * FROM QuestionsView WHERE BestSolution IS NULL";
-            return this.Mapper.Map<List<QuestionView>>(this.Db.Query<QA.Data.QuestionView>(sql).ToList());
+            return this.Mapper.Map<IEnumerable<QuestionView>>(this.Db.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView WHERE BestSolution IS NULL"));
         }
-        public List<QuestionView> GetUserParticipation(string userId)
+
+        public IEnumerable<QuestionView> GetUserParticipation(string userId)
         {
-            var sql = $"SELECT * FROM QuestionsView WHERE AnswersUserId='{userId}'";
-            return this.Mapper.Map<List<QuestionView>>(this.Db.Query<QA.Data.QuestionView>(sql).ToList());
+            return this.Mapper.Map<IEnumerable<QuestionView>>(this.Db.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView WHERE AnswersUserId='{userId}'"));
         }
     }
 }

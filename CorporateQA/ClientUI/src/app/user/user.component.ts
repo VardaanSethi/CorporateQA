@@ -8,7 +8,7 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
 export class UserComponent implements OnInit {
 
   constructor(
-    private authenticationService:AuthenticationService
+    private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
