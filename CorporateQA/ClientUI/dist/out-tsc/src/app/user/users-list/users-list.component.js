@@ -4,7 +4,9 @@ let UsersListComponent = class UsersListComponent {
     constructor(router, userService) {
         this.router = router;
         this.userService = userService;
+        this.loggedUser = localStorage.getItem('userId');
     }
+    ;
     ngOnInit() {
         this.initialiseUsers();
     }

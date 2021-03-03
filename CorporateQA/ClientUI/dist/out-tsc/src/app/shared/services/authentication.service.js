@@ -14,7 +14,6 @@ let AuthenticationService = class AuthenticationService {
         this.profileSource = localStorage.getItem('userId') != null ? localStorage.getItem('profileSource') : '';
     }
     signUp(data) {
-        console.log(data);
         return this.http.post(this.rootUrl + '/signup', data);
     }
     signin(data) {

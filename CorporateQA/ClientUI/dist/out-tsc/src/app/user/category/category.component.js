@@ -15,7 +15,6 @@ let CategoryComponent = class CategoryComponent {
             description: new FormControl('', Validators.required),
         });
         this.categoryService.getCategoriesList().subscribe((res) => {
-            console.log(res);
             this.categories = res;
         });
     }

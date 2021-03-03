@@ -33,7 +33,7 @@ namespace QA.Services
 
         public IEnumerable<QuestionView> GetUserQuestions(string userId)
         {
-            return this.Mapper.Map<IEnumerable<QuestionView>>(this.Db.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView WHERE UserId='{userId}'").ToList());
+            return this.Mapper.Map<IEnumerable<QuestionView>>(this.Db.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView WHERE UserId='{userId}'"));
         }
 
         public IEnumerable<UsersView> GetSearchUser(string userName)
