@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using QA.Models;
 using QA.Services.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CorporateQA.Controllers
 {

@@ -7,7 +7,6 @@ using System.Data;
 using System.Data.SqlClient;
 using Dapper;
 using System.Linq;
-using Dapper.Contrib.Extensions;
 
 namespace QA.Services
 {
