@@ -18,7 +18,7 @@ let SignupComponent = class SignupComponent {
             username: new FormControl('', Validators.required),
             email: new FormControl('', [
                 Validators.required,
-                Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$'),
+                Validators.email,
             ]),
             password: new FormControl('', [
                 Validators.required,

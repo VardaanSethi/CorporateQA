@@ -35,7 +35,7 @@ namespace CorporateQA.Controllers
         [Route("question")]
 
         public IActionResult PostQuestion(Question question)
-        {
+        { 
             return Ok(this.HomeService.PostQuestion(question));
         }
 
