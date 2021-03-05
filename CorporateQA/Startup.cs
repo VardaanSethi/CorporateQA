@@ -29,9 +29,13 @@ namespace CorporateQA
         {
 
             services.AddControllers();
-            services.AddSingleton<ICategoryService, CategoryService>();
-            services.AddSingleton<IUserService, UserService>();
-            services.AddSingleton<IHomeService, HomeService>();
+
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IHomeService, HomeService>();
+
+            services.AddScoped<DapperConnection>();
+
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddDbContext<AuthenticationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddIdentity<AuthenticationUser, IdentityRole>()
