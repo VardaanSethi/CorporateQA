@@ -8,14 +8,14 @@ namespace QA.Services.Contracts
     {
         IEnumerable<QuestionView> GetQuestions();
         IEnumerable<QuestionView> GetQuestionsByCategory(int categoryId);
-        int PostQuestion(Question question);
-        int PostAnswer(Answer answer);
-        void PostLikes(List<string> likes, int answerId);
-        void PostDislikes(List<string> dislikes, int answerId);
-        void PostUpVotes(List<string> upVotes, int questionId);
-        void PostViews(int views, int questionId);
+        int AddQuestion(Question question);
+        int AddAnswer(Answer answer);
+        void AddLikes(List<string> likes, int answerId);
+        void AddDislikes(List<string> dislikes, int answerId);
+        void AddUpVotes(List<string> upVotes, int questionId);
+        void AddViews(int views, int questionId);
         IEnumerable<QuestionView> GetSearchQuestions(string questionTitle);
-        void PostBestSolution(bool isBestSolution, int answerId);
+        void AddBestSolution(bool isBestSolution, int answerId);
         IEnumerable<QuestionView> GetQuestionsByDate(int date);
         IEnumerable<QuestionView> GetUnSolvedQuestions();
         IEnumerable<QuestionView> GetSolvedQuestions();

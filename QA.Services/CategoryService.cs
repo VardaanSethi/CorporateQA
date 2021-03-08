@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
 using Dapper;
-using Microsoft.Extensions.Configuration;
 using QA.Models;
 using QA.Services.Contracts;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 using Dapper.Contrib.Extensions;
+using QA.Models.ViewModels;
 
 namespace QA.Services
 {
@@ -14,29 +12,46 @@ namespace QA.Services
     {
         private readonly DapperConnection Db;
         private readonly IMapper Mapper;
-        public CategoryService(IMapper mapper, DapperConnection dapperConnection)
+        public CategoryService(IMapper mapper, DapperConnection dapperDb)
         {
-            Db = dapperConnection;
+            Db = dapperDb;
             Mapper = mapper;
         }
         public IEnumerable<Category> GetCategories()
         {
-            return Mapper.Map<IEnumerable<Category>>(Db.dapperConnection.GetAll<QA.Data.Category>());
+            return Db.dapperDb.Query<QA.Data.Category>("SELECT * FROM Category").MapAllTo<IEnumerable<QA.Data.Category>, Category>();
         }
 
-        public IEnumerable<object> GetCategoryQuestionLookup()
+        public IEnumerable<CategoryView> GetCategoryQuestionLookup()
         {
-            return Db.dapperConnection.Query<object>("SELECT * FROM CategoriesView");
+            return Db.dapperDb.Query<CategoryView>("SELECT * FROM CategoriesView");
         }
 
-        public IEnumerable<object> SearchCategories(string category)
+        public IEnumerable<CategoryView> SearchCategories(string category)
         {
-            return Db.dapperConnection.Query<object>($"SELECT * FROM CategoriesView WHERE Name LIKE '{category}%'");
+            return Db.dapperDb.Query<CategoryView>($"SELECT * FROM CategoriesView WHERE Name LIKE '{category}%'");
         }
 
-        public int PostCategory(Category category)
+        public int AddCategory(Category category)
         {
-            return (int)Db.dapperConnection.Insert<QA.Data.Category>(this.Mapper.Map<QA.Data.Category>(category));
+            return (int)Db.dapperDb.Insert<QA.Data.Category>(this.Mapper.Map<QA.Data.Category>(category));
+        }
+    }
+
+
+    /// <summary>
+    /// Extension Method Defination
+    /// </summary>
+    public static class MappingExtension
+    {
+        public static D MapTo<S, D>(this S data)
+        {
+            return Mapper.Map<D>(data);
+        }
+
+        public static IEnumerable<D> MapAllTo<S, D>(this S data)
+        {
+            return Mapper.Map<IEnumerable<D>>(data);
         }
     }
 }

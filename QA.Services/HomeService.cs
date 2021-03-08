@@ -16,90 +16,90 @@ namespace QA.Services
     {
         private readonly DapperConnection Db;
         private readonly IMapper Mapper;
-        public HomeService(IMapper mapper, DapperConnection dapperConnection)
+        public HomeService(IMapper mapper, DapperConnection dapperDb)
         {
-            Db = dapperConnection;
+            Db = dapperDb;
             Mapper = mapper;
         }
 
         public IEnumerable<QuestionView> GetQuestions()
         {
-            return Mapper.Map<IEnumerable<QuestionView>>(Db.dapperConnection.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView"));
+            return Db.dapperDb.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView").MapAllTo<IEnumerable<QA.Data.QuestionView>, QuestionView>();
         }
 
         public IEnumerable<QuestionView> GetQuestionsByCategory(int categoryId)
         {
-            return Mapper.Map<IEnumerable<QuestionView>>(Db.dapperConnection.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView WHERE CategoryId={categoryId}"));
+            return Db.dapperDb.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView WHERE CategoryId={categoryId}").MapAllTo<IEnumerable<QA.Data.QuestionView>, QuestionView>();
         }
 
-        public int PostQuestion(Question question)
+        public int AddQuestion(Question question)
         {
-            return  (int)Db.dapperConnection.Insert<QA.Data.Question>(this.Mapper.Map<QA.Data.Question>(question));
+            return  (int)Db.dapperDb.Insert<QA.Data.Question>(this.Mapper.Map<QA.Data.Question>(question));
         }
 
-        public int PostAnswer(Answer answer)
+        public int AddAnswer(Answer answer)
         {
-            return (int)Db.dapperConnection.Insert<QA.Data.Answer>(this.Mapper.Map<QA.Data.Answer>(answer));
+            return (int)Db.dapperDb.Insert<QA.Data.Answer>(this.Mapper.Map<QA.Data.Answer>(answer));
         }
 
-        public void PostLikes(List<string> likes, int answerId)
+        public void AddLikes(List<string> likes, int answerId)
         {
-            var answer = this.Mapper.Map<Answer>(Db.dapperConnection.Get<QA.Data.Answer>(answerId));
+            var answer = this.Mapper.Map<Answer>(Db.dapperDb.Get<QA.Data.Answer>(answerId));
             answer.Likes = likes;
-            Db.dapperConnection.Update<QA.Data.Answer>(this.Mapper.Map<QA.Data.Answer>(answer));
+            Db.dapperDb.Update<QA.Data.Answer>(this.Mapper.Map<QA.Data.Answer>(answer));
         }
-        public void PostDislikes(List<string> dislikes, int answerId)
+        public void AddDislikes(List<string> dislikes, int answerId)
         {
-            var answer = this.Mapper.Map<Answer>(Db.dapperConnection.Get<QA.Data.Answer>(answerId));
+            var answer = this.Mapper.Map<Answer>(Db.dapperDb.Get<QA.Data.Answer>(answerId));
             answer.Dislikes = dislikes;
-            Db.dapperConnection.Update<QA.Data.Answer>(this.Mapper.Map<QA.Data.Answer>(answer));
+            Db.dapperDb.Update<QA.Data.Answer>(this.Mapper.Map<QA.Data.Answer>(answer));
         }
 
-        public void PostUpVotes(List<string> upVotes, int questionId)
+        public void AddUpVotes(List<string> upVotes, int questionId)
         {
-            var question = this.Mapper.Map<Question>(Db.dapperConnection.Get<QA.Data.Question>(questionId));
+            var question = this.Mapper.Map<Question>(Db.dapperDb.Get<QA.Data.Question>(questionId));
             question.UpVotes = upVotes;
-            Db.dapperConnection.Update<QA.Data.Question>(Mapper.Map<QA.Data.Question>(question));
+            Db.dapperDb.Update<QA.Data.Question>(Mapper.Map<QA.Data.Question>(question));
         }
 
-        public void PostViews(int views, int questionId)
+        public void AddViews(int views, int questionId)
         {
-            var question = this.Mapper.Map<Question>(Db.dapperConnection.Get<QA.Data.Question>(questionId));
+            var question = this.Mapper.Map<Question>(Db.dapperDb.Get<QA.Data.Question>(questionId));
             question.Views++;
-            Db.dapperConnection.Update<QA.Data.Question>(this.Mapper.Map<QA.Data.Question>(question));
+            Db.dapperDb.Update<QA.Data.Question>(this.Mapper.Map<QA.Data.Question>(question));
         }
 
         public IEnumerable<QuestionView> GetSearchQuestions(string questionTitle)
         {
-            return this.Mapper.Map<IEnumerable<QuestionView>>(Db.dapperConnection.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView WHERE Title LIKE '{questionTitle}%'"));
+            return Db.dapperDb.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView WHERE Title LIKE '{questionTitle}%'").MapAllTo<IEnumerable<QA.Data.QuestionView>, QuestionView>();
         }
 
-        public void PostBestSolution(bool isBestSolution, int answerId)
+        public void AddBestSolution(bool isBestSolution, int answerId)
         {
-            var answer = this.Mapper.Map<Answer>(Db.dapperConnection.Get<QA.Data.Answer>(answerId));
+            var answer = this.Mapper.Map<Answer>(Db.dapperDb.Get<QA.Data.Answer>(answerId));
             answer.IsBestSolution = isBestSolution;
-            Db.dapperConnection.Update<QA.Data.Answer>(this.Mapper.Map<QA.Data.Answer>(answer));
+            Db.dapperDb.Update<QA.Data.Answer>(this.Mapper.Map<QA.Data.Answer>(answer));
         }
 
         public IEnumerable<QuestionView> GetQuestionsByDate(int date)
         {
             var requiredDate = DateTime.Now.AddDays(-date).ToString("yyyy-MM-dd hh:mm:ss.sss");
-            return this.Mapper.Map<IEnumerable<QuestionView>>(Db.dapperConnection.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView WHERE CreatedOn>'{requiredDate}'"));
+            return Db.dapperDb.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView WHERE CreatedOn>'{requiredDate}'").MapAllTo<IEnumerable<QA.Data.QuestionView>, QuestionView>();
         }
 
         public IEnumerable<QuestionView> GetSolvedQuestions()
         {
-            return this.Mapper.Map<IEnumerable<QuestionView>>(Db.dapperConnection.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView WHERE BestSolution IS NOT NULL"));
+            return Db.dapperDb.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView WHERE BestSolution IS NOT NULL").MapAllTo<IEnumerable<QA.Data.QuestionView>, QuestionView>();
         }
 
         public IEnumerable<QuestionView> GetUnSolvedQuestions()
         {
-            return this.Mapper.Map<IEnumerable<QuestionView>>(Db.dapperConnection.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView WHERE BestSolution IS NULL"));
+            return Db.dapperDb.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView WHERE BestSolution IS NULL").MapAllTo<IEnumerable<QA.Data.QuestionView>, QuestionView>();
         }
 
         public IEnumerable<QuestionView> GetUserParticipation(string userId)
         {
-            return this.Mapper.Map<IEnumerable<QuestionView>>(Db.dapperConnection.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView WHERE AnswersUserId='{userId}'"));
+            return Db.dapperDb.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView WHERE AnswersUserId='{userId}'").MapAllTo<IEnumerable<QA.Data.QuestionView>, QuestionView>();
         }
     }
 }

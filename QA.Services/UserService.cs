@@ -10,36 +10,33 @@ namespace QA.Services
     public class UserService : IUserService
     {
         private readonly DapperConnection Db;
-        private readonly IMapper Mapper;
-        public UserService(IMapper mapper, DapperConnection dapperConnection)
+        public UserService(DapperConnection dapperDb)
         {
-            Db = dapperConnection;
-            Mapper = mapper;
+            Db = dapperDb;
         }
         public IEnumerable<UsersView> GetUsers()
         {
-            var sql = "SELECT * FROM UsersView";
-            return this.Mapper.Map<IEnumerable<UsersView>>(Db.dapperConnection.Query<QA.Data.UsersView>(sql));
+            return Db.dapperDb.Query<QA.Data.UsersView>("SELECT * FROM UsersView").MapAllTo<IEnumerable<QA.Data.UsersView>, UsersView>();
         }
 
         public UsersView GetUser(string userId)
         {
-            return this.Mapper.Map<UsersView>(Db.dapperConnection.Query<QA.Data.UsersView>($"SELECT * FROM UsersView WHERE Id='{userId}'").FirstOrDefault());
+            return Db.dapperDb.Query<QA.Data.UsersView>($"SELECT * FROM UsersView WHERE Id='{userId}'").FirstOrDefault().MapTo<QA.Data.UsersView, UsersView>();
         }
 
         public IEnumerable<QuestionView> GetUserQuestions(string userId)
         {
-            return this.Mapper.Map<IEnumerable<QuestionView>>(Db.dapperConnection.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView WHERE UserId='{userId}'"));
+            return Db.dapperDb.Query<QA.Data.QuestionView>($"SELECT * FROM QuestionsView WHERE UserId='{userId}'").MapAllTo<IEnumerable<QA.Data.QuestionView>, QuestionView>();
         }
 
         public IEnumerable<UsersView> GetSearchUser(string userName)
         {
-            return this.Mapper.Map<IEnumerable<UsersView>>(Db.dapperConnection.Query<QA.Data.UsersView>($"SELECT * FROM UsersView WHERE UserName LIKE '{userName}%'"));
+            return Db.dapperDb.Query<QA.Data.UsersView>($"SELECT * FROM UsersView WHERE UserName LIKE '{userName}%'").MapAllTo<IEnumerable<QA.Data.UsersView>, UsersView>();
         }
 
         public IEnumerable<AnswerView> GetAnswers(int questionId)
         {
-            return this.Mapper.Map<IEnumerable<AnswerView>>(Db.dapperConnection.Query<QA.Data.AnswerView>($"SELECT * FROM AnswersView WHERE QuestionId={questionId}"));
+            return Db.dapperDb.Query<QA.Data.AnswerView>($"SELECT * FROM AnswersView WHERE QuestionId={questionId}").MapAllTo<IEnumerable<QA.Data.AnswerView>, AnswerView>();
         }
     }
 }

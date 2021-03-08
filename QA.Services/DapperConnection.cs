@@ -7,10 +7,10 @@ namespace QA.Services
 {
     public class DapperConnection
     {
-        public readonly IDbConnection dapperConnection;
+        public readonly IDbConnection dapperDb;
         public DapperConnection(IConfiguration configuration)
         {
-            dapperConnection = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
+            dapperDb = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
         }
     }
 }

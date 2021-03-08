@@ -36,7 +36,7 @@ namespace CorporateQA.Controllers
         [Route("category")]
         public IActionResult PostCategory(Category category)
         {
-            return Ok(this.CategoryService.PostCategory(category));
+            return Ok(this.CategoryService.AddCategory(category));
         }
 
     }

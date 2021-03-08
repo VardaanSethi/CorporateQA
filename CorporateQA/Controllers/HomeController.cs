@@ -36,39 +36,39 @@ namespace CorporateQA.Controllers
 
         public IActionResult PostQuestion(Question question)
         { 
-            return Ok(this.HomeService.PostQuestion(question));
+            return Ok(this.HomeService.AddQuestion(question));
         }
 
         [Route("answer")]
 
         public IActionResult PostAnswer(Answer answer)
         {
-            return Ok(this.HomeService.PostAnswer(answer));
+            return Ok(this.HomeService.AddAnswer(answer));
         }
 
         [Route("likes/{answerId}")]
         public IActionResult PostLikes(List<string> likes, int answerId)
         {
-            this.HomeService.PostLikes(likes, answerId);
+            this.HomeService.AddLikes(likes, answerId);
             return Ok();
         }
         [Route("dislikes/{answerId}")]
         public IActionResult PostDislikes(List<string> dislikes, int answerId)
         {
-            this.HomeService.PostDislikes(dislikes, answerId);
+            this.HomeService.AddDislikes(dislikes, answerId);
             return Ok();
         }
         [Route("upvotes/{questionId}")]
         public IActionResult PostUpVotes(List<string> upVotes, int questionId)
         {
-            this.HomeService.PostUpVotes(upVotes, questionId);
+            this.HomeService.AddUpVotes(upVotes, questionId);
             return Ok();
         }
 
         [Route("views/{questionId}")]
         public IActionResult PostViews(int views, int questionId)
         {
-            this.HomeService.PostViews(views, questionId);
+            this.HomeService.AddViews(views, questionId);
             return Ok();
         }
 
@@ -83,7 +83,7 @@ namespace CorporateQA.Controllers
 
         public IActionResult GetBestSolution(bool isBestSolution, int answerId)
         {
-            this.HomeService.PostBestSolution(isBestSolution, answerId);
+            this.HomeService.AddBestSolution(isBestSolution, answerId);
             return Ok();
         }
 
