@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorporateQA", "CorporateQA\CorporateQA.csproj", "{B64B5B8A-00C7-452C-ADC2-96AEA71A630C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QA.Models", "QA.Models\QA.Models.csproj", "{6DFDCA8A-C3CA-44C6-9B22-2B99105091A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QA.Models", "QA.Models\QA.Models.csproj", "{6DFDCA8A-C3CA-44C6-9B22-2B99105091A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QA.Services", "QA.Services\QA.Services.csproj", "{8A861380-8F1F-4B45-833B-7A8461269C54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QA.Services", "QA.Services\QA.Services.csproj", "{8A861380-8F1F-4B45-833B-7A8461269C54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QA.Data", "QA.Data\QA.Data.csproj", "{59197B41-B970-4C25-901B-51CE7DB3594B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QA.Data", "QA.Data\QA.Data.csproj", "{59197B41-B970-4C25-901B-51CE7DB3594B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QA.Db", "QA.Db\QA.Db.csproj", "{A3167DF6-94E3-4ACD-82D4-DAB4000768D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{59197B41-B970-4C25-901B-51CE7DB3594B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59197B41-B970-4C25-901B-51CE7DB3594B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59197B41-B970-4C25-901B-51CE7DB3594B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3167DF6-94E3-4ACD-82D4-DAB4000768D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3167DF6-94E3-4ACD-82D4-DAB4000768D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3167DF6-94E3-4ACD-82D4-DAB4000768D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3167DF6-94E3-4ACD-82D4-DAB4000768D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
